@@ -1,0 +1,55 @@
+<!-- campaigns/show.ejs -->
+<div class="container campaign-container">
+        <div class="row">
+          <div class="col-sm-2">
+
+            <% if(user._id.equals(campaign.creator_id._id)) { %>
+              <a class="btn btn-primary" href="/campaign/<%= campaign._id %>/edit">Edit this campaign</a>
+            <% } %>
+
+            <img src="https://ksr-ugc.imgix.net/assets/007/188/910/68df9ec3603e3f3138bed402dea3cab2_original.jpg?w=80&h=80&fit=crop&v=1466566705&auto=format&q=92&s=eff05acf65569368cc99f6363722fe60"><br>
+            By: <strong><%= campaign.creator_id.username %></strong>
+          </div>
+          <div class="col-sm-10">
+            <h1><%= campaign.title %></h1>
+            <h2 class="campaign-category"><%= campaign.category %></h2>
+            <p class="campaign-description"><%= campaign.description %></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8">
+            <img class="campaign-image" src="/uploads/<%= campaign.imgUrl %>">
+          </div>
+          <div class="col-sm-4 campaign-info">
+            <div class="campaign-progress" data-current-pledge="<%= campaign.totalPledged %>">
+              <progress value="<%= campaign.totalPledged %>" max="<%= campaign.goal %>"></progress>
+            </div>
+            <div class="campaign-pledged">
+              <span class="campaign-total">$<%= campaign.totalPledged %></span><br>
+              <span class="light-text">
+                pledged of
+                $<%= campaign.goal %></span> goal
+              </span>
+            </div>
+            <div class="campaign-backers">
+              <strong class="large-strong"><%= campaign.backerCount %></strong><br>
+              <span class="light-text">backers</span>
+            </div>
+            <div class="campaign-time">
+              <strong class="large-strong"><%= campaign.timeRemaining %></strong><br>
+            </div>
+            <a class="btn backer-btn back-it" 
+               href="/campaigns/<%= campaign._id%>/rewards"
+               data-id="<%= campaign._id %>"
+               data-pledge="100"
+               >
+               Back This Project +100$</a>
+            <a class="btn backer-btn back-it" 
+               href="/campaigns/<%= campaign._id%>/rewards"
+               data-id="<%= campaign._id %>"
+               data-pledge="5"
+               >
+               Back This Project +5$</a>
+          </div>
+        </div>
+      </div>

@@ -1,0 +1,24 @@
+<div class="campaign-row row">
+    <a href="/campaign/new" class="btn btn-success">New campaign</a>
+    <h3 class="text-center">You may be interested in...</h3>
+    <% campaigns.forEach((campaign) => { %>
+        <div class="col-sm-3 home-campaign-box">
+            <img src="/uploads/<%= campaign.imgUrl %>">
+            <div class="campaign-info-wrapper">
+                <a class="title" href="/campaign/<%= campaign._id %>">
+                    <strong>
+                        <%= campaign.title %>
+                    </strong>
+                </a>
+                <br> by
+                <span class="light-text">
+                    <%= campaign.creator_id.username %>
+                </span>
+                <br>
+                <span class="light-text description">
+                    <%= campaign.description %>
+                </span>
+            </div>
+        </div>
+    <%  }) %>
+</div>
